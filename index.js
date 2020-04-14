@@ -87,7 +87,7 @@ function createRock(x) {
 
     /**
      * But if the rock *has* reached the bottom of the GAME,
-     * we should remove the rock from the DOM.
+     * we should remove the rock from the DOM. if rock.style.top >= 360, remove
      */
   }
 
@@ -103,9 +103,9 @@ function createRock(x) {
 
 /**
  * End the game by clearing `gameInterval`,
- * removing all ROCKS from the DOM,
+ * removing all ROCKS from the DOM,     X
  * and removing the `moveDodger` event listener.
- * Finally, alert "YOU LOSE!" to the player.
+ * Finally, alert "YOU LOSE!" to the player.       X
  */
 function endGame() {
   
@@ -129,17 +129,17 @@ function moveDodgerLeft() {
     if (left > 0) {
       DODGER.style.left = `${left - 4}px`;
     }
-  })
+  });
 }
 
 function moveDodgerRight() {
  window.requestAnimationFrame(function(){
-   const right = positionToInteger(DODGER.style.right);
-   
-   if (right > 0) {
-     DODGER.style.right = `${right-4}px`;
-   }
- })
+   const left = positionToInteger(DODGER.style.left)
+
+    if (left < 360) {
+      DODGER.style.left = `${left + 4}px`;
+    }
+ });
 }
 
 /**
